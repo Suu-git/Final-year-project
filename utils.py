@@ -1,4 +1,4 @@
-from tensorflow import keras
+import tensorflow as tf
 import pandas_datareader as web
 import numpy as np
 import pandas as pd
@@ -9,7 +9,7 @@ import pickle
 
 class StockPredictionModel():
   def __init__(self, my_model, scaler):
-    self.LSTM_model = keras.models.load_model(my_model)
+    self.LSTM_model = tf.keras.models.load_model(my_model)
     self.N = self.LSTM_model.input.shape[1]
     with open(scaler, 'rb') as f:
       self.scaler = pickle.load(f)
