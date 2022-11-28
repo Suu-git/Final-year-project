@@ -5,6 +5,9 @@ import datetime as dt
 import matplotlib.pyplot as plt
 import numpy as np
 
+# DogeModel = StockPredictionModel('LSTM_Doge','scaler_Doge.pkl')
+# BitCoinModel = StockPredictionModel('LSTM_Bitcoin','scaler_Bitcoin.pkl')
+# ETHModel = StockPredictionModel('LSTM_ETH','scaler_ETH.pkl')
 
 selection_map = {
     'Bitcoin':(BitCoinModel, 'BTC-USD'),

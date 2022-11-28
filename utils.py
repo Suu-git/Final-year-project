@@ -1,4 +1,4 @@
-import tensorflow as tf
+from tensorflow import keras
 import pandas_datareader as web
 import numpy as np
 import pandas as pd
@@ -6,10 +6,20 @@ from keras.models import Sequential
 from keras.layers import *
 import matplotlib.pyplot as plt
 import pickle
+import tensorflow as tf
 
 class StockPredictionModel():
   def __init__(self, my_model, scaler):
-    self.LSTM_model = tf.keras.models.load_model(my_model)
+    model=Sequential()
+    model.add(LSTM(128,return_sequences=True,input_shape=(30, 5)))
+    model.add(LSTM(64,return_sequences=True))
+    model.add(LSTM(32,return_sequences=False))
+    model.add(Dense(64,activation='tanh'))
+    model.add(Dense(5))
+
+    self.LSTM_model = tf.keras.models.load_model(my_model+'.h5')
+    #self.LSTM_model = model.load_weights(my_model)
+
     self.N = self.LSTM_model.input.shape[1]
     with open(scaler, 'rb') as f:
       self.scaler = pickle.load(f)

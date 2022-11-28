@@ -1,6 +1,8 @@
+protobuf==3.19.6
+tensorflow
 streamlit
 pandas_datareader
 matplotlib
 numpy
 pandas
-tensorflow
+scikit-learn
